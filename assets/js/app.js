@@ -16,6 +16,9 @@ document.addEventListener('DOMContentLoaded', () => {
     'blue'
   ]
 
+  // add grid
+
+  
   //The Tetrominoes
   const lTetromino = [
     [1, width+1, width*2+1, 2],
@@ -283,5 +286,17 @@ document.addEventListener('DOMContentLoaded', () => {
       clearInterval(timerId)
     }
   }
-
+  createGrid();
+  function createGrid(){
+    for(var y=0; y < grid.offsetHeight; y+=20){
+      for(var x=0; x < grid.offsetWidth; x+=20){
+        let div = document.createElement('div');
+        div.className = 'absolute';
+        div.id = `x${x}y${y}`;
+        grid.append(div);
+        document.getElementById(`x${x}y${y}`).style.left = `${x}px`;
+        document.getElementById(`x${x}y${y}`).style.top = `${y}px`;
+      }
+    }
+  }
 })
